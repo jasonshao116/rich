@@ -949,6 +949,10 @@ def test_align_center():
     text.align("center", 10)
     assert text.plain == "   foo    "
 
+def test_align_center_with_double_width_padding() -> None:
+    text = Text("x")
+    text.align("center", 6, character="界")
+    assert text.cell_len == 6
 
 def test_detect_indentation():
     text = """\
