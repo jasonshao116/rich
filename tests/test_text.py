@@ -1124,3 +1124,18 @@ def test_soft_wrap_styled() -> None:
     # Background is reset before \n
     expected = "\x1b[34;47msoft wrap is on\x1b[0m\nNext line\n"
     assert output == expected
+
+def test_right_crop_zero_updates_length():
+    text = Text("hello")
+    text.right_crop(0)
+
+    assert text.plain == ""
+    assert len(text) == 0
+
+
+def test_remove_empty_suffix_updates_length():
+    text = Text("hello")
+    text.remove_suffix("")
+
+    assert text.plain == ""
+    assert len(text) == 0
